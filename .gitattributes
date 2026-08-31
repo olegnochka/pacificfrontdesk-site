@@ -4,3 +4,5 @@
 *.ico binary
 # The archived legacy page must stay byte-for-byte identical (HighLevel form)
 public/answering-service/index.html -text
+public/privacy.html -text
+public/tos.html -text
