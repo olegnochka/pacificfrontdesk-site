@@ -2,3 +2,5 @@
 *.woff2 binary
 *.png binary
 *.ico binary
+# The archived legacy page must stay byte-for-byte identical (HighLevel form)
+public/answering-service/index.html -text
