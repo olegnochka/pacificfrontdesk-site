@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Pacific Front Desk - day shift and night shift"
+  description="One founder in Los Angeles. By day: Pacific Front Desk, an AI answering service for home-service businesses. By night: Nattskift Games, iOS games with no ads."
+  ogImage="/og/default.png"
+>
+  <div class="flex min-h-svh flex-col">
+    <div class="grid flex-1 md:grid-cols-2">
+      {/* Day door */}
+      <a
+        href="/answering-service"
+        class="door group relative flex flex-col justify-between gap-16 bg-paper p-8 hover:bg-white md:p-12"
+      >
+        <div class="absolute right-8 top-10 h-14 w-14 rounded-full bg-sodium md:right-12" aria-hidden="true"></div>
+        <span class="type-label text-day-muted">The day shift</span>
+        <span class="flex flex-col gap-5 pb-4">
+          <span class="font-display text-[15px] font-bold tracking-[0.06em] text-day-text">PACIFIC FRONT DESK</span>
+          <span class="type-hero block text-day-text">Your business never misses another call.</span>
+          <span class="measure block text-day-muted">
+            An AI answering service for home-service businesses in Los Angeles.
+            Answers 24/7, books jobs into your calendar, texts back missed calls.
+          </span>
+          <span class="mt-2 inline-flex items-center gap-2 font-display font-semibold text-pacific">
+            Enter
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="translate-x-0 transition-transform group-hover:translate-x-1 motion-reduce:transition-none">
+              <path d="M1 7h15M11 1l6 6-6 6"></path>
+            </svg>
+          </span>
+        </span>
+      </a>
+
+      {/* Night door */}
+      <a
+        href="https://nattskiftgames.com"
+        rel="noopener"
+        class="door night group relative flex flex-col justify-between gap-16 bg-ink p-8 hover:bg-[#12161d] md:p-12"
+      >
+        <div class="absolute right-8 top-10 h-3 w-3 bg-sodium md:right-12" aria-hidden="true"></div>
+        <span class="type-label text-night-muted">The night shift</span>
+        <span class="flex flex-col gap-5 pb-4">
+          <svg width="44" height="44" viewBox="0 0 512 512" role="img" aria-label="Nattskift Games monogram">
+            <rect x="0" y="0" width="512" height="256" fill="#0B0E12" stroke="#201B2E" stroke-width="8"></rect>
+            <rect x="0" y="256" width="512" height="256" fill="#6B3FA0"></rect>
+            <path fill="#FFFFFF" d="M186 58 L232 58 L292 166 L292 58 L326 58 L326 198 L280 198 L220 90 L220 198 L186 198 Z"></path>
+          </svg>
+          <span class="type-hero block text-night-text">Made on the night shift.</span>
+          <span class="measure block text-night-muted">
+            When the phones go quiet, the same founder builds iOS games as
+            Nattskift Games. No ads, no timers, honest games.
+          </span>
+          <span class="mt-2 inline-flex items-center gap-2 font-display font-semibold text-royal-light">
+            nattskiftgames.com
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="translate-x-0 transition-transform group-hover:translate-x-1 motion-reduce:transition-none">
+              <path d="M1 7h15M11 1l6 6-6 6"></path>
+            </svg>
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <footer class="border-t border-day-hairline bg-paper">
+      <p class="mx-auto max-w-4xl px-8 py-5 text-center text-[13px] text-day-muted">
+        One founder, Los Angeles. Days: phones answered. Nights: games shipped.
+        &nbsp;·&nbsp; © 2026 Pacific Front Desk LLC
+      </p>
+    </footer>
+  </div>
+</Base>

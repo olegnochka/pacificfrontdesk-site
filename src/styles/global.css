@@ -1,0 +1,219 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Pacific Front Desk tokens. Day palette carries the business; the night
+   tokens exist for the Nattskift door and reuse that brand's exact values.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-*: initial;
+  /* day */
+  --color-paper: #f7f5f0;
+  --color-card: #ffffff;
+  --color-day-text: #17222e;
+  --color-day-muted: #5b6672;
+  --color-pacific: #0e6ba8; /* accent: text on paper and fills w/ white label */
+  --color-pacific-deep: #0a517f;
+  --color-day-hairline: #e4dfd6;
+  --color-badge: #efeae0;
+  --color-white: #ffffff;
+  /* night (Nattskift brand values, verbatim) */
+  --color-ink: #0b0e12;
+  --color-night-raised: #201b2e;
+  --color-royal: #6b3fa0;
+  --color-royal-light: #9e82d4;
+  --color-sodium: #ffb74a;
+  --color-night-text: #eceff3;
+  --color-night-muted: #9aa4b2;
+  --color-night-hairline: rgb(255 255 255 / 0.08);
+
+  --font-*: initial;
+  --font-display: "Archivo", "Archivo Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", "IBM Plex Sans Fallback", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-*: initial;
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-full: 9999px;
+
+  --ease-*: initial;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Self-hosted fonts — same files the Nattskift site ships. */
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo-latin-wdth-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Archivo Fallback";
+  src: local("Arial");
+  size-adjust: 104%;
+  ascent-override: 85%;
+  descent-override: 20.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Fallback";
+  src: local("Arial");
+  size-adjust: 100.5%;
+  ascent-override: 102%;
+  descent-override: 27%;
+  line-gap-override: 0%;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-day-text);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-pacific);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  /* night contexts get a visible ring on dark */
+  .night :focus-visible {
+    outline-color: var(--color-royal-light);
+  }
+}
+
+@utility type-hero {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  @media (width >= 48rem) {
+    font-size: 56px;
+  }
+}
+@utility type-section {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  @media (width >= 48rem) {
+    font-size: 34px;
+  }
+}
+@utility type-item {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+}
+@utility type-label {
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+@utility measure {
+  max-width: 60ch;
+}
+@utility section-pad {
+  padding-block: clamp(64px, 9vh, 112px);
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--color-pacific);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1;
+    padding: 17px 26px;
+    border-radius: var(--radius-control);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-pacific-deep);
+  }
+  .card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-day-hairline);
+    border-radius: var(--radius-card);
+  }
+  .link-day {
+    color: var(--color-pacific);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--color-pacific), transparent 60%);
+    text-underline-offset: 3px;
+  }
+  .link-day:hover {
+    text-decoration-color: var(--color-pacific);
+  }
+  .skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 100;
+    background-color: var(--color-pacific);
+    color: var(--color-white);
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: var(--radius-control);
+    transform: translateY(calc(-100% - 16px));
+  }
+  .skip-link:focus-visible {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary,
+  .link-day,
+  .card,
+  .door {
+    transition-property: background-color, border-color, color, text-decoration-color;
+    transition-duration: 240ms;
+    transition-timing-function: var(--ease-out);
+  }
+}
