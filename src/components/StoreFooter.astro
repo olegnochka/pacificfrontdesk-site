@@ -1,0 +1,19 @@
+---
+interface Props {
+  supportEmail?: string;
+  privacyUrl?: string;
+}
+const { supportEmail, privacyUrl = '/privacy.html' } = Astro.props;
+---
+
+<footer class="border-t border-day-hairline bg-paper">
+  <div class="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-8 text-[14px] text-day-muted md:flex-row md:items-center md:justify-between">
+    <p>© 2026 Pacific Front Desk LLC · Los Angeles, California</p>
+    <p class="flex flex-wrap gap-x-5 gap-y-2">
+      {supportEmail && <a href={`mailto:${supportEmail}`} class="link-day">Support</a>}
+      <a href={privacyUrl} class="link-day">Privacy</a>
+      <a href="/tos.html" class="link-day">Terms</a>
+      <a href="/store" class="link-day">Store</a>
+    </p>
+  </div>
+</footer>

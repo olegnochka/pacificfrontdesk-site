@@ -1,0 +1,256 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoreHeader from '../../components/StoreHeader.astro';
+import StoreFooter from '../../components/StoreFooter.astro';
+import { mdViewer as p } from '../../data/store';
+
+const features = [
+  {
+    title: 'Read .md files properly',
+    body: 'Local files and raw GitHub links open rendered, with code highlighting, tables, task lists and a raw/rendered toggle.',
+  },
+  {
+    title: 'Copy as rich text',
+    body: 'Paste Markdown into documents and emails with headings, lists, tables and links intact. Or copy it as HTML or plain text.',
+  },
+  {
+    title: 'Smart paste',
+    body: 'Paste formatted text from a web page or document into the editor and it becomes clean Markdown as you paste.',
+  },
+  {
+    title: 'Right-click to Markdown',
+    body: 'Copy any selection as Markdown, or convert a whole page. Handy for notes, docs and AI prompts.',
+  },
+  {
+    title: 'A real editor',
+    body: 'Source, split or preview. Drag and drop files, open from a link, autosaved drafts, print or save as PDF.',
+  },
+  {
+    title: 'Private by design',
+    body: 'Everything runs inside your browser. No account, no analytics, no ads. Your documents never leave your computer.',
+  },
+];
+
+const gallery = [
+  { src: '/store/md-viewer/copy-menu.png', alt: 'The Copy menu: Markdown, rich text, HTML, plain text or a selection' },
+  { src: '/store/md-viewer/smart-paste.png', alt: 'An article pasted into the editor, converted to Markdown' },
+  { src: '/store/md-viewer/dark-theme.png', alt: 'Dark theme with the table of contents sidebar' },
+  { src: '/store/md-viewer/rendered-file.png', alt: 'A Markdown file opened in a browser tab, rendered' },
+];
+
+const free = [
+  'View, edit and export Markdown',
+  'Copy as Markdown, rich text, HTML or plain text',
+  '5 smart conversions a day',
+  'Light, dark and auto themes',
+];
+const pro = [
+  'Everything in Free',
+  'Unlimited smart paste and page conversions',
+  'Premium themes: Sepia, Solarized, Nord, Dracula',
+  'Table of contents sidebar',
+  'Export to standalone HTML',
+];
+
+const faqs = [
+  {
+    q: 'Is MD Viewer free?',
+    a: 'Yes. Reading, editing and every copy format are free forever. Pro adds unlimited conversions and a few power features.',
+  },
+  {
+    q: 'How do I unlock Pro after buying?',
+    a: 'Your license key arrives by email right after checkout. In MD Viewer, click Go Pro, choose "I have a license key", and paste it in.',
+  },
+  {
+    q: 'How many browsers can I use one license on?',
+    a: `Up to ${p.activationLimit}. To move a license, open Go Pro in the old browser and choose "Remove from this browser".`,
+  },
+  {
+    q: 'What happens if I cancel the yearly plan?',
+    a: 'Pro keeps working until the end of the period you paid for, then MD Viewer returns to the free plan. Nothing else changes.',
+  },
+  {
+    q: 'I installed MD Viewer before Pro existed. Do I have to pay?',
+    a: 'No. Everyone who installed the free version before Pro launched keeps Pro for life, as a thank-you.',
+  },
+  {
+    q: 'Who handles the payment?',
+    a: 'Lemon Squeezy, our reseller and merchant of record. They process the payment, handle sales tax and VAT, and email your receipt and license key. We never see your card details.',
+  },
+];
+
+const ready = (url: string) => url.startsWith('https://');
+---
+
+<Base
+  title="MD Viewer - Markdown reader, copy and paste for Chrome"
+  description="Read .md files beautifully in Chrome, copy Markdown as rich text, and turn any web page into clean Markdown. Free, with an optional Pro upgrade."
+>
+  <StoreHeader />
+
+  {/* Hero */}
+  <section class="section-pad">
+    <div class="mx-auto grid grid-cols-1 max-w-6xl items-center gap-12 px-6 lg:grid-cols-[1fr_1.15fr]">
+      <div>
+        <img src={p.icon} width="88" height="88" alt="MD Viewer icon" class="h-[88px] w-[88px]" />
+        <p class="type-label mt-6 text-day-muted">{p.kind}</p>
+        <h1 class="type-hero mt-2">{p.name}</h1>
+        <p class="mt-4 font-display text-[22px] font-semibold leading-snug">{p.tagline}</p>
+        <p class="measure mt-4 text-day-muted">{p.summary}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-5">
+          {
+            ready(p.installUrl) ? (
+              <a href={p.installUrl} class="btn-primary" rel="noopener">Add to Chrome, it's free</a>
+            ) : (
+              <span class="inline-block rounded-control border border-day-hairline bg-badge px-[26px] py-[17px] font-display font-semibold leading-none text-day-muted">
+                Coming soon to the Chrome Web Store
+              </span>
+            )
+          }
+          <a href="#pricing" class="link-day">See Pro pricing</a>
+        </div>
+      </div>
+      <img
+        src="/store/md-viewer/editor.png"
+        width="1280"
+        height="800"
+        alt="MD Viewer's editor: Markdown source on the left, the rendered preview on the right"
+        class="card h-auto w-full shadow-[0_18px_50px_-20px_rgb(23_34_46/0.35)]"
+      />
+    </div>
+  </section>
+
+  {/* Features */}
+  <section class="section-pad border-t border-day-hairline bg-card">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="type-section">Markdown in, Markdown out.</h2>
+      <ul class="mt-10 grid grid-cols-1 gap-x-10 gap-y-9 md:grid-cols-2 lg:grid-cols-3">
+        {
+          features.map((f) => (
+            <li>
+              <h3 class="type-item">{f.title}</h3>
+              <p class="mt-2 text-day-muted">{f.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <ul class="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+        {
+          gallery.map((g) => (
+            <li>
+              <img src={g.src} width="1280" height="800" alt={g.alt} loading="lazy" class="card h-auto w-full" />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {/* Pricing */}
+  <section id="pricing" class="section-pad border-t border-day-hairline">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="type-section">Free to use. Pro when you want more.</h2>
+      <p class="measure mt-4 text-day-muted">Try every Pro feature free for 7 days from inside the extension. No card needed.</p>
+
+      <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div class="card flex flex-col p-7">
+          <h3 class="type-item">Free</h3>
+          <p class="mt-3"><span class="font-display text-[40px] font-bold leading-none">$0</span></p>
+          <p class="mt-1 text-[14px] text-day-muted">forever</p>
+          <ul class="mt-6 flex flex-col gap-2.5">
+            {free.map((f) => <li class="flex gap-2.5"><span class="text-pacific" aria-hidden="true">✓</span>{f}</li>)}
+          </ul>
+        </div>
+
+        {
+          p.plans.map((plan) => (
+            <div class:list={['card relative flex flex-col p-7', plan.best && 'border-2 border-pacific']}>
+              {plan.best && (
+                <span class="type-label absolute -top-3 left-7 rounded-full bg-pacific px-3 py-1 text-[11px] text-white">
+                  Best value
+                </span>
+              )}
+              <h3 class="type-item">Pro · {plan.name}</h3>
+              <p class="mt-3"><span class="font-display text-[40px] font-bold leading-none">{plan.price}</span></p>
+              <p class="mt-1 text-[14px] text-day-muted">{plan.period} · {plan.note}</p>
+              <ul class="mt-6 flex flex-1 flex-col gap-2.5">
+                {pro.map((f) => <li class="flex gap-2.5"><span class="text-pacific" aria-hidden="true">✓</span>{f}</li>)}
+              </ul>
+              <div class="mt-8">
+                {ready(plan.checkoutUrl) ? (
+                  <a href={plan.checkoutUrl} class="btn-primary w-full text-center" rel="noopener">
+                    Buy {plan.name.toLowerCase()} · {plan.price}
+                  </a>
+                ) : (
+                  <span class="block rounded-control border border-day-hairline bg-badge px-[26px] py-[17px] text-center font-display font-semibold leading-none text-day-muted">
+                    Available soon
+                  </span>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-[14px] text-day-muted">
+        Prices in USD. Sales tax or VAT is added at checkout where it applies. Secure checkout by Lemon Squeezy,
+        our merchant of record.
+      </p>
+    </div>
+  </section>
+
+  {/* How Pro works */}
+  <section class="section-pad border-t border-day-hairline bg-card">
+    <div class="mx-auto max-w-6xl px-6">
+      <h2 class="type-section">How Pro works</h2>
+      <ol class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <li>
+          <span class="type-label text-pacific">Step 1</span>
+          <h3 class="type-item mt-2">Choose a plan</h3>
+          <p class="mt-2 text-day-muted">Yearly or lifetime. Checkout is secure and takes about a minute.</p>
+        </li>
+        <li>
+          <span class="type-label text-pacific">Step 2</span>
+          <h3 class="type-item mt-2">Get your key</h3>
+          <p class="mt-2 text-day-muted">Your license key arrives by email together with the receipt.</p>
+        </li>
+        <li>
+          <span class="type-label text-pacific">Step 3</span>
+          <h3 class="type-item mt-2">Paste it in</h3>
+          <p class="mt-2 text-day-muted">In MD Viewer: Go Pro → "I have a license key". Pro unlocks instantly.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  {/* FAQ */}
+  <section class="section-pad border-t border-day-hairline">
+    <div class="mx-auto max-w-3xl px-6">
+      <h2 class="type-section">Questions</h2>
+      <dl class="mt-8 divide-y divide-day-hairline border-y border-day-hairline">
+        {
+          faqs.map((f, i) => (
+            <div>
+              <dt>
+                <button
+                  type="button"
+                  data-faq-trigger
+                  aria-controls={`faq-${i}`}
+                  class="flex w-full items-center justify-between gap-6 py-5 text-left font-display text-[18px] font-semibold"
+                >
+                  {f.q}
+                  <span aria-hidden="true" class="text-pacific">+</span>
+                </button>
+              </dt>
+              <dd id={`faq-${i}`} class="measure pb-5 text-day-muted">{f.a}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="mt-8 text-day-muted">
+        Something else? Email <a href={`mailto:${p.supportEmail}`} class="link-day">{p.supportEmail}</a>.
+      </p>
+    </div>
+  </section>
+
+  <StoreFooter supportEmail={p.supportEmail} privacyUrl={p.privacyUrl} />
+</Base>

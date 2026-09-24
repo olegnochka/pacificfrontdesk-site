@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoreHeader from '../../components/StoreHeader.astro';
+import StoreFooter from '../../components/StoreFooter.astro';
+import { products } from '../../data/store';
+---
+
+<Base
+  title="Store - Pacific Front Desk"
+  description="Small, carefully made software from Pacific Front Desk. Free to try, with optional Pro upgrades."
+>
+  <div class="flex min-h-svh flex-col">
+    <StoreHeader />
+
+    <section class="section-pad flex-1">
+      <div class="mx-auto max-w-6xl px-6">
+        <span class="type-label text-day-muted">Store</span>
+        <h1 class="type-hero mt-3">Small tools, made with care.</h1>
+        <p class="measure mt-5 text-day-muted">
+          Software from the same one-founder shop in Los Angeles. Free to use, with optional Pro
+          upgrades for people who want more.
+        </p>
+
+        <ul class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {
+            products.map((p) => (
+              <li>
+                <a href={`/store/${p.slug}`} class="card group flex h-full gap-5 p-6 hover:border-pacific">
+                  <img src={p.icon} width="72" height="72" alt="" class="h-[72px] w-[72px] flex-none" />
+                  <span class="flex flex-col">
+                    <span class="type-label text-day-muted">{p.kind}</span>
+                    <span class="type-item mt-1">{p.name}</span>
+                    <span class="mt-2 text-day-muted">{p.tagline}</span>
+                    <span class="mt-4 inline-flex items-center gap-2 font-display font-semibold text-pacific">
+                      View
+                      <svg width="16" height="12" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform group-hover:translate-x-1 motion-reduce:transition-none">
+                        <path d="M1 7h15M11 1l6 6-6 6" />
+                      </svg>
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <StoreFooter />
+  </div>
+</Base>
