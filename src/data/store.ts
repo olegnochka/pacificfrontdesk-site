@@ -35,7 +35,7 @@ export const mdViewer: Product = {
   summary:
     'Opens .md files beautifully rendered, copies Markdown as rich text that keeps its formatting, and turns any web page or selection into clean Markdown.',
   icon: '/store/md-viewer/icon.png',
-  installUrl: '',
+  installUrl: 'https://chromewebstore.google.com/detail/md-viewer-markdown-reader/enmpoeakakgiipgoabhhlhkopcbmajgj',
   privacyUrl: 'https://pacificfrontdesk.github.io/md-viewer/privacy.html',
   supportEmail: 'helge.artusa+mdviewer.support@gmail.com',
   activationLimit: 3,
