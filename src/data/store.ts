@@ -37,7 +37,7 @@ export const mdViewer: Product = {
   icon: '/store/md-viewer/icon.png',
   installUrl: 'https://chromewebstore.google.com/detail/md-viewer-markdown-reader/enmpoeakakgiipgoabhhlhkopcbmajgj',
   privacyUrl: 'https://pacificfrontdesk.github.io/md-viewer/privacy.html',
-  supportEmail: 'helge.artusa+mdviewer.support@gmail.com',
+  supportEmail: 'support@pacificfrontdesk.com',
   activationLimit: 3,
   plans: [
     { id: 'yearly', name: 'Yearly', price: '$4.99', period: 'per year', note: 'Cancel anytime', checkoutUrl: '' },
