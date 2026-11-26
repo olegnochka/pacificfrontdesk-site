@@ -1215,7 +1215,8 @@ document.getElementById('load').remove();
 const $ = (id) => document.getElementById(id);
 const fit = () => { const w = innerWidth, h = innerHeight - 52, s = Math.min(w / 1920, h / 1080); canvas.style.transform = `translate(-50%,-50%) scale(${s})`; };
 addEventListener('resize', fit); fit();
-let t = 0, playing = false, last = 0, soundOn = true, loop = true, stopSound = null, idle = null;
+const EMBED = q.has('autoplay');   // embedded: start rolling, muted until the viewer asks for sound
+let t = 0, playing = false, last = 0, soundOn = !EMBED, loop = true, stopSound = null, idle = null;
 const fmt = (x) => x.toFixed(2);
 const show = (n) => { S.seek(t, n); $('scrub').value = t; $('time').textContent = `${fmt(t)} / ${fmt(D)}`; };
 const still = () => { clearTimeout(idle); idle = setTimeout(() => { if (!playing) show(16); }, 250); };   // sharper frame once at rest
@@ -1235,6 +1236,7 @@ $('snd').onclick = () => { soundOn = !soundOn; $('snd').setAttribute('aria-press
 $('loop').onclick = () => { loop = !loop; $('loop').setAttribute('aria-pressed', loop); };
 addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); playing ? pause() : play(); } });
 show(16);
+if (EMBED) { $('snd').textContent = 'Sound off'; $('snd').setAttribute('aria-pressed', 'false'); play(); }
 window.READY = true;
 </script>
 </body>
